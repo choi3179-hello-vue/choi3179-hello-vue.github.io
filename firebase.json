@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "choi3179-hello-vue" ,
+    "public": "docs",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
