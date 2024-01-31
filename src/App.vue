@@ -1,47 +1,21 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+import busstop from "@/assets/busstop.json"
+
+const busstops = ref(busstop['data'])
+console.log(busstops)
 </script>
-
+	
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+	<h1> 서울시 최다 이용 버스정류장 </h1>
+	<div v-for="(item,index) in busstops">
+		<div v-if="item.정류장명.includes('신림')">
+			<br>
+			<h4>#{{ item.순위 }} : {{ item.정류장명 }}</h4>
+			<li>승차 : {{ item.승차 }} / 하차 : {{ item.하차 }}</li>
+			<li>총 이용인원 : {{ item['총 이용인원'] }}</li>
+			<br><hr>
+		</div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+	</div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
